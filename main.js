@@ -2,7 +2,7 @@
  * Copyright (c) 2020 Digital Bazaar, Inc. All rights reserved.
  */
 import base64url from 'base64url-universal';
-import {createJwsSigningInput, bytesToString} from './util.js';
+import {createJwsSigningInput, b64UrlEncodedStringToObject} from './util.js';
 
 const BASE64URL_REGEX = /^[A-Za-z0-9_-]+$/;
 
@@ -79,27 +79,14 @@ export async function verify({jwt, verifyFn}) {
   }
   const [encodedHeader, encodedPayload, encodedSignature] = jwt.split('.');
 
-  let header;
-  try {
-    header = JSON.parse(bytesToString(base64url.decode(encodedHeader)));
-  } catch(e) {
-    throw new Error('Could not parse JWT header; ' + e);
-  }
-
-  if(!(header && typeof header === 'object')) {
-    throw new Error('Invalid JWT header.');
-  }
-
-  let payload;
-  try {
-    payload = JSON.parse(bytesToString(base64url.decode(encodedPayload)));
-  } catch(e) {
-    throw new Error('Could not parse JWT payload; ' + e);
-  }
-
-  if(!(payload && typeof payload === 'object')) {
-    throw new Error('Invalid JWT payload.');
-  }
+  const header = b64UrlEncodedStringToObject({
+    str: encodedHeader,
+    name: 'JWT Header'
+  });
+  const payload = b64UrlEncodedStringToObject({
+    str: encodedPayload,
+    name: 'JWT Payload'
+  });
 
   // perform signature verification
   const signature = base64url.decode(encodedSignature);
