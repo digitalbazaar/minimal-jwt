@@ -71,6 +71,6 @@
   "homepage": "https://github.com/digitalbazaar/minimal-jwt",
   "module": "main.js",
   "browser": {
-    "./util.js": "./util-browser.js"
+    "./text-codec.js": "./text-codec-browser.js"
   }
 }
