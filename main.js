@@ -7,13 +7,15 @@ import {createJwsSigningInput, bytesToString} from './util.js';
 const BASE64URL_REGEX = /^[A-Za-z0-9_-]+$/;
 
 /**
+ * Serializes and signs the payload as a JWT.
  *
- * @param header.alg - {string}.
- * @param header.kid - {string}.
- * @param payload - {object}.
- * @param signFn - {function}.
+ * @param {object} payload - The set of claims to be signed.
+ * @param {object} header -  A set of JOSE Header Parameters.
+ * @param {string} header.alg -The cryptographic algorithm to secure the JWT.
+ * @param {string} header.kid -The ID of the key used to secure the JWT.
+ * @param {Function} signFn - Performs the signature on the JWS Signing Input.
  *
- * @returns {Promise<{object}>} The proof containing the signature value.
+ * @returns {Promise<{string}>} Resolves with the signed JWT.
  */
 export async function sign({payload, header = {}, signFn}) {
   if(!(header.alg && typeof header.alg === 'string')) {
@@ -61,10 +63,12 @@ export async function sign({payload, header = {}, signFn}) {
 }
 
 /**
- * @param jwt - {string}.
- * @param verifyFn - {function}.
+ * Verifies the claims of a JWT.
  *
- * @returns {Promise<{object}>} Resolves with parsed Header and Payload of JWT.
+ * @param {string} jwt - The JSON Web Token to verify.
+ * @param {Function} verifyFn - Verifies the signature and header of the JWT.
+ *
+ * @returns {Promise<{object}>} Resolves with parsed header and claims of JWT.
  */
 export async function verify({jwt, verifyFn}) {
   if(!(jwt && typeof jwt === 'string' && jwt.includes('.'))) {
