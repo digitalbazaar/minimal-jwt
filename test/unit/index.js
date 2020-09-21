@@ -18,7 +18,7 @@ describe('minimal-jwt', () => {
   beforeEach(async () => {
     hmac = await MockHmac.create();
     header = {alg: 'HS256', kid: '1738'};
-    payload = {data: 'drip or drown'};
+    payload = {'example-claim': 'drip or drown'};
   });
 
   describe('JWT.sign', () => {
@@ -193,7 +193,7 @@ describe('minimal-jwt', () => {
       should.exist(res);
       res.should.have.property('header');
       res.should.have.property('payload');
-      res.payload.data.should.equal(payload.data);
+      res.payload['example-claim'].should.equal(payload['example-claim']);
     });
   });
   it('should throw when verification fails', async () => {
