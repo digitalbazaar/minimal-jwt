@@ -40,16 +40,16 @@ async function signFn({data}) {
   return crypto.createHmac('sha256', Buffer.from(SECRET)).update(data).digest();
 }
 
-
 (async function() {
   const header = {alg: 'HS256', kid: '678-999-8212'};
-  const payload = {data: 'it was all a dream'};
+  const payload = {'example-claim': 'it was all a dream'};
 
   const jwt = await JWT.sign({payload, header, signFn});
 
-  // eyJhbGciOiJIUzI1NiIsImtpZCI6IjY3OC05OTktODIxMiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiaXQgd2FzIGFsbCBhIGRyZWFtIn0.z3kOh1ksQl0F-KnbIY38WdjzyEbItrx0oIOLheOrdlU
+  // eyJhbGciOiJIUzI1NiIsImtpZCI6IjY3OC05OTktODIxMiIsInR5cCI6IkpXVCJ9.eyJleGFtcGxlLWNsYWltIjoiaXQgd2FzIGFsbCBhIGRyZWFtIn0.6j_qVHmai3Fa5DeLzok8poa2B-KIAxy9bcEKqvWsuJI
   console.log(jwt);
 })();
+
 ```
 
 ### Verify
@@ -64,17 +64,14 @@ const EXPECTED_KID = '678-999-8212';
 const SECRET = '<the-best-kept-secret>';
 
 (async function() {
-  const header = {alg: 'HS256', kid: '678-999-8212'};
-  const payload = {data: 'it was all a dream'};
-
-  const jwt = 'eyJhbGciOiJIUzI1NiIsImtpZCI6IjY3OC05OTktODIxMiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiaXQgd2FzIGFsbCBhIGRyZWFtIn0.z3kOh1ksQl0F-KnbIY38WdjzyEbItrx0oIOLheOrdlU';
+  const jwt = 'eyJhbGciOiJIUzI1NiIsImtpZCI6IjY3OC05OTktODIxMiIsInR5cCI6IkpXVCJ9.eyJleGFtcGxlLWNsYWltIjoiaXQgd2FzIGFsbCBhIGRyZWFtIn0.6j_qVHmai3Fa5DeLzok8poa2B-KIAxy9bcEKqvWsuJI';
 
   const response = await JWT.verify({jwt, verifyFn});
 
   /*
     {
       header: { alg: 'HS256', kid: '678-999-8212', typ: 'JWT' },
-      payload: { data: 'it was all a dream' }
+      payload: { 'example-claim': 'it was all a dream' }
     }
   */
   console.log(response);
