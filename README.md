@@ -41,12 +41,12 @@ async function signFn({data}) {
 }
 
 (async function() {
-  const header = {alg: 'HS256', kid: '678-999-8212'};
+  const header = {alg: 'HS256', kid: '194B72684'};
   const payload = {'example-claim': 'it was all a dream'};
 
   const jwt = await JWT.sign({payload, header, signFn});
 
-  // eyJhbGciOiJIUzI1NiIsImtpZCI6IjY3OC05OTktODIxMiIsInR5cCI6IkpXVCJ9.eyJleGFtcGxlLWNsYWltIjoiaXQgd2FzIGFsbCBhIGRyZWFtIn0.6j_qVHmai3Fa5DeLzok8poa2B-KIAxy9bcEKqvWsuJI
+  // eyJhbGciOiJIUzI1NiIsImtpZCI6IjE5NEI3MjY4NCIsInR5cCI6IkpXVCJ9.eyJleGFtcGxlLWNsYWltIjoiaXQgd2FzIGFsbCBhIGRyZWFtIn0.rVh61q6ZJCeS4vj-d8OmFFWnAbt4vcWcoMqHtGlSQ18
   console.log(jwt);
 })();
 
@@ -60,17 +60,17 @@ const JWT = require('minimal-jwt');
 const crypto = require('crypto');
 
 const EXPECTED_ALGS = new Set(['HS256']);
-const EXPECTED_KID = '678-999-8212';
+const EXPECTED_KID = '194B72684';
 const SECRET = '<the-best-kept-secret>';
 
 (async function() {
-  const jwt = 'eyJhbGciOiJIUzI1NiIsImtpZCI6IjY3OC05OTktODIxMiIsInR5cCI6IkpXVCJ9.eyJleGFtcGxlLWNsYWltIjoiaXQgd2FzIGFsbCBhIGRyZWFtIn0.6j_qVHmai3Fa5DeLzok8poa2B-KIAxy9bcEKqvWsuJI';
+  const jwt = 'eyJhbGciOiJIUzI1NiIsImtpZCI6IjE5NEI3MjY4NCIsInR5cCI6IkpXVCJ9.eyJleGFtcGxlLWNsYWltIjoiaXQgd2FzIGFsbCBhIGRyZWFtIn0.rVh61q6ZJCeS4vj-d8OmFFWnAbt4vcWcoMqHtGlSQ18';
 
   const response = await JWT.verify({jwt, verifyFn});
 
   /*
     {
-      header: { alg: 'HS256', kid: '678-999-8212', typ: 'JWT' },
+      header: { alg: 'HS256', kid: '194B72684', typ: 'JWT' },
       payload: { 'example-claim': 'it was all a dream' }
     }
   */
