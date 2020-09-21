@@ -2,7 +2,7 @@
  * Copyright (c) 2020 Digital Bazaar, Inc. All rights reserved.
  */
 import base64url from 'base64url-universal';
-import {createJwsSigningInput} from './util.js';
+import {createJwsSigningInput, bytesToString} from './util.js';
 
 const BASE64URL_REGEX = /^[A-Za-z0-9_-]+$/;
 
@@ -77,7 +77,7 @@ export async function verify({jwt, verifyFn}) {
 
   let header;
   try {
-    header = JSON.parse(base64url.decode(encodedHeader));
+    header = JSON.parse(bytesToString(base64url.decode(encodedHeader)));
   } catch(e) {
     throw new Error('Could not parse JWT header; ' + e);
   }
@@ -88,7 +88,7 @@ export async function verify({jwt, verifyFn}) {
 
   let payload;
   try {
-    payload = JSON.parse(base64url.decode(encodedPayload));
+    payload = JSON.parse(bytesToString(base64url.decode(encodedPayload)));
   } catch(e) {
     throw new Error('Could not parse JWT payload; ' + e);
   }
