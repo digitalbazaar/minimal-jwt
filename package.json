@@ -36,6 +36,7 @@
     "eslint": "^7.1.0",
     "eslint-config-digitalbazaar": "^2.6.1",
     "eslint-plugin-jsdoc": "^20.4.0",
+    "isomorphic-webcrypto": "^2.3.6",
     "karma": "^4.0.1",
     "karma-babel-preprocessor": "^8.0.0",
     "karma-chai": "^0.1.0",
