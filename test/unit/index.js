@@ -202,6 +202,7 @@ describe('minimal-jwt', () => {
     }
     const jwt = await JWT.sign({payload, header, signFn});
 
+    // eslint-disable-next-line no-unused-vars
     async function verifyFn({alg, kid, data, signature}) {
       alg.should.equal(header.alg);
       kid.should.equal(header.kid);
