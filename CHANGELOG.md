@@ -1,6 +1,6 @@
 # @digitalbazaar/minimal-jwt Changelog
 
-## 2.1.0 - 2023-02-XX
+## 2.1.0 - 2023-02-01
 
 ### Changed
 - Use global `TextDecoder` and `TextEncoder`.
