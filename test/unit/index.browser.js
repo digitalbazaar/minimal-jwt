@@ -4,11 +4,9 @@
 import * as base64url from 'base64url-universal';
 import * as JWT from '../../lib/index.js';
 import chai from 'chai';
-import {createRequire} from 'node:module';
 import {getMockHmac} from '../MockHmac.common.js';
-const require = createRequire(import.meta.url);
-const crypto = require('isomorphic-webcrypto');
 
+const crypto = self.crypto || self.msCrypto;
 const should = chai.should();
 
 describe('minimal-jwt', () => {
