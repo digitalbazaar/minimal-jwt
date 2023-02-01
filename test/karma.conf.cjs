@@ -1,8 +1,6 @@
 /*!
  * Copyright (c) 2020-2023 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
-
 module.exports = function(config) {
   // bundler to test: webpack, browserify
   const bundler = process.env.BUNDLER || 'webpack';
