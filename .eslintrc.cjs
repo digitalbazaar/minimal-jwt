@@ -4,8 +4,6 @@ module.exports = {
     node: true
   },
   globals: {
-    TextDecoder: true,
-    TextEncoder: true,
     Uint8Array: true
   },
   extends: [
