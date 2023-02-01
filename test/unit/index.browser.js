@@ -4,7 +4,7 @@
 import {getMockHmac} from '../MockHmac.common.js';
 import {test} from './common.js';
 
-const crypto = self.crypto || self.msCrypto;
+const crypto = globalThis.crypto;
 
 const MockHmac = getMockHmac({crypto});
 
