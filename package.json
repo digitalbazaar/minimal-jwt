@@ -8,7 +8,7 @@
   "scripts": {
     "test": "npm run test-node",
     "test-node": "cross-env NODE_ENV=test mocha -t 30000 -R ${REPORTER:-spec} test/unit/index.js",
-    "test-karma": "karma start test/karma.conf.js",
+    "test-karma": "karma start test/karma.conf.cjs",
     "coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text-summary npm run test-node",
     "coverage-ci": "cross-env NODE_ENV=test nyc --reporter=lcovonly npm run test-node",
     "coverage-report": "nyc report",
