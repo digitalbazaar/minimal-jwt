@@ -5,7 +5,7 @@ import * as base64url from 'base64url-universal';
 import * as JWT from '../../lib/index.js';
 import chai from 'chai';
 import {MockHmac} from '../MockHmac.js';
-console.log(await MockHmac.create());
+
 const should = chai.should();
 
 describe('minimal-jwt', () => {
