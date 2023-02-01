@@ -133,8 +133,8 @@ export function test({MockHmac}) {
 
         should.exist(err);
         should.not.exist(jwt);
-        const errMsg = '"signFn" must return a Base64URL Encoded String ' +
-          'or an instance of a Uint8Array.';
+        const errMsg = '"signFn" must return a base64url-encoded ' +
+          'string or a Uint8Array.';
         err.message.should.contain(errMsg);
       });
 
