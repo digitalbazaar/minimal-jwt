@@ -69,5 +69,8 @@
   "module": "lib/main.js",
   "browser": {
     "./lib/text-codec.js": "./lib/text-codec-browser.js"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
