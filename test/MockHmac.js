@@ -1,8 +1,9 @@
 /*!
  * Copyright (c) 2019-2023 Digital Bazaar, Inc. All rights reserved.
  */
-
-const base64url = require('base64url-universal');
+import * as base64url from 'base64url-universal';
+import {createRequire} from 'node:module';
+const require = createRequire(import.meta.url);
 
 const nodejs = (
   typeof process !== 'undefined' && process.versions && process.versions.node);
@@ -18,7 +19,7 @@ if(nodejs) {
 // base64url.encode(new TextEncoder().encode('<the-best-kept-secret>')
 const _secret = base64url.decode('PHRoZS1iZXN0LWtlcHQtc2VjcmV0Pg');
 
-class MockHmac {
+export class MockHmac {
   constructor({id, type, algorithm, key}) {
     this.id = id;
     this.type = type;
@@ -51,5 +52,3 @@ class MockHmac {
     return crypto.subtle.verify(key.algorithm, key, signature, data);
   }
 }
-
-module.exports = MockHmac;

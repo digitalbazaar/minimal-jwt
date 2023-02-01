@@ -1,14 +1,11 @@
 /*!
  * Copyright (c) 2019-2023 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
-
-const base64url = require('base64url-universal');
-const chai = require('chai');
-const MockHmac = require('../MockHmac.js');
-
-const JWT = require('../../');
-
+import * as base64url from 'base64url-universal';
+import * as JWT from '../../lib/index.js';
+import chai from 'chai';
+import {MockHmac} from '../MockHmac.js';
+console.log(await MockHmac.create());
 const should = chai.should();
 
 describe('minimal-jwt', () => {
