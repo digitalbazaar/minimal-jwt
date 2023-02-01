@@ -30,8 +30,8 @@ npm install
 ### Sign
 
 ```js
-const JWT = require('@digitalbazaar/minimal-jwt');
-const crypto = require('crypto');
+import * as JWT from '@digitalbazaar/minimal-jwt';
+import crypto from 'node:crypto';
 
 const SECRET = '<the-best-kept-secret>';
 
@@ -56,8 +56,8 @@ async function signFn({data}) {
 
 
 ```js
-const JWT = require('@digitalbazaar/minimal-jwt');
-const crypto = require('crypto');
+import * as JWT from '@digitalbazaar/minimal-jwt';
+import crypto from 'node:crypto';
 
 const EXPECTED_ALGS = new Set(['HS256']);
 const EXPECTED_KID = '194B72684';
