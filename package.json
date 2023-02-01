@@ -3,7 +3,8 @@
   "version": "1.0.2-0",
   "description": "Minimal signature/verification JWT library",
   "license": "BSD-3-Clause",
-  "main": "lib/index.js",
+  "type": "module",
+  "main": "./lib/index.js",
   "scripts": {
     "test": "npm run test-node",
     "test-node": "cross-env NODE_ENV=test mocha -t 30000 -R ${REPORTER:-spec} test/unit/index.js",
@@ -17,8 +18,7 @@
     "lib/"
   ],
   "dependencies": {
-    "base64url-universal": "^1.1.0",
-    "esm": "^3.2.25"
+    "base64url-universal": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
